@@ -17,6 +17,7 @@ func main() {
 	database.DB.AutoMigrate(&models.CoolingSystem{})
 	database.DB.AutoMigrate(&models.GraphicsCard{})
 	database.DB.AutoMigrate(&models.OS{})
+	database.DB.AutoMigrate(&models.PowerSupply{})
 
 	r := gin.Default()
 	r.GET("/", controllers.HelloTechHub)
@@ -28,6 +29,7 @@ func main() {
 	r.GET("/coolings", controllers.GetCoolingSystems)
 	r.GET("/gpus", controllers.GetGraphicsCards)
 	r.GET("/os", controllers.GetOSs)
+	r.GET("/power", controllers.GetPowerSupplies)
 
 	r.GET("/processors/:id", controllers.GetProcessor)
 	r.GET("/mobos/:id", controllers.GetMotherBoard)
@@ -36,6 +38,7 @@ func main() {
 	r.GET("/coolings/:id", controllers.GetCollingSystem)
 	r.GET("/gpus/:id", controllers.GetGraphicsCard)
 	r.GET("/os/:id", controllers.GetOS)
+	r.GET("/power/:id", controllers.GetPowerSupply)
 
 	r.GET("/processors/brands/:brand", controllers.GetProcessorsByBrand)
 	r.GET("/mobos/brands/:brand", controllers.GetMoboByBrand)
@@ -44,6 +47,7 @@ func main() {
 	r.GET("/coolings/brands/:brand", controllers.GetCollingSystemByBrand)
 	r.GET("/gpus/brands/:brand", controllers.GetGraphicsCardsByBrand)
 	r.GET("/os/brands/:brand", controllers.GetOSByBrand)
+	r.GET("/power/brands/:brand", controllers.GetPowerSuppliesByBrand)
 
 	r.POST("/processors", controllers.CreateProcessor)
 	r.POST("/mobos", controllers.CreateMotherBoard)
@@ -52,6 +56,7 @@ func main() {
 	r.POST("/coolings", controllers.CreateCollingSystem)
 	r.POST("/gpus", controllers.CreateGraphicsCard)
 	r.POST("/os", controllers.CreateOS)
+	r.POST("/power", controllers.CreatePowerSupply)
 
 	r.PUT("/processors/:id", controllers.UpdateProcessor)
 	r.PUT("/mobos/:id", controllers.UpdateMotherBoard)
@@ -60,6 +65,7 @@ func main() {
 	r.PUT("/coolings/:id", controllers.UpdateCoolingSystem)
 	r.PUT("/gpus/:id", controllers.UpdateGraphicsCard)
 	r.PUT("/os/:id", controllers.UpdateOS)
+	r.PUT("/power", controllers.UpdatePowerSupply)
 
 	r.DELETE("/processors/:id", controllers.DeleteProcessor)
 	r.DELETE("/mobos/:id", controllers.DeleteMotherBoard)
@@ -68,6 +74,7 @@ func main() {
 	r.DELETE("/coolings/:id", controllers.DeleteCoolingSystem)
 	r.DELETE("/gpus/:id", controllers.DeleteGraphicsCard)
 	r.DELETE("/os/:id", controllers.UpdateOS)
+	r.DELETE("/power/:id", controllers.DeletePowerSupply)
 
 	r.Run(":3000") // listen and serve on 0.0.0.0:3000
 }

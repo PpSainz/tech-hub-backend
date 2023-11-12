@@ -63,7 +63,7 @@ func CreateRam(c *gin.Context) {
 	}
 
 	c.JSON(201, gin.H{
-		"processor": ram,
+		"ram": ram,
 	})
 }
 

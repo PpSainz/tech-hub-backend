@@ -63,7 +63,7 @@ func CreateMotherBoard(c *gin.Context) {
 	}
 
 	c.JSON(201, gin.H{
-		"processor": motherBoard,
+		"motherBoard": motherBoard,
 	})
 }
 

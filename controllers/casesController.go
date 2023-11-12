@@ -63,7 +63,7 @@ func CreateCase(c *gin.Context) {
 	}
 
 	c.JSON(201, gin.H{
-		"processor": cased,
+		"case": cased,
 	})
 }
 

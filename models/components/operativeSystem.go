@@ -8,5 +8,4 @@ type OS struct {
 	Name        *string `gorm:"not null;size:50"`
 	Version     *string `gorm:"not null;size:10"`
 	Description *string `gorm:"not null;size:200"`
-	ImageURL    string  `gorm:"not null;size:200"`
 }

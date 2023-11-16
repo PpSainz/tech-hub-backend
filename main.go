@@ -4,6 +4,8 @@ import (
 	"github.com/Yiro13/tech-hub-backend/controllers"
 	"github.com/Yiro13/tech-hub-backend/database"
 	models "github.com/Yiro13/tech-hub-backend/models/components"
+	computers "github.com/Yiro13/tech-hub-backend/models/computers"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,9 +21,14 @@ func main() {
 	database.DB.AutoMigrate(&models.OS{})
 	database.DB.AutoMigrate(&models.PowerSupply{})
 	database.DB.AutoMigrate(&models.Storage{})
+	database.DB.AutoMigrate(&computers.Computer{})
 
 	r := gin.Default()
 	r.GET("/", controllers.HelloTechHub)
+
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	r.Use(cors.New(config))
 
 	r.GET("/processors", controllers.GetProcessors)
 	r.GET("/mobos", controllers.GetMotherBoards)

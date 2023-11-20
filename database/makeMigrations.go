@@ -8,5 +8,5 @@ import (
 
 func Migrate(DB *gorm.DB) {
 	DB.AutoMigrate(&models.Processor{}, &models.MotherBoard{}, &models.RAM{}, &models.Case{}, &models.CoolingSystem{}, &models.GraphicsCard{}, &models.OS{},
-		&models.PowerSupply{}, &models.Storage{}, &computers.Computer{})
+		&models.PowerSupply{}, &models.Storage{}, &computers.Computer{}, &computers.Recommendation{})
 }

@@ -27,6 +27,7 @@ func SetUpRouter() *gin.Engine {
 	r.GET("/power", controllers.GetPowerSupplies)
 	r.GET("/storages", controllers.GetStorages)
 	r.GET("/computers", pcscontroller.GetComputers)
+	r.GET("/recommendations", pcscontroller.GetRecommendations)
 
 	r.GET("/processors/:id", controllers.GetProcessor)
 	r.GET("/mobos/:id", controllers.GetMotherBoard)
@@ -38,6 +39,7 @@ func SetUpRouter() *gin.Engine {
 	r.GET("/power/:id", controllers.GetPowerSupply)
 	r.GET("/storages/:id", controllers.GetStorage)
 	r.GET("/computers/:id", pcscontroller.GetComputer)
+	r.GET("/recommendations/:id", pcscontroller.GetRecommendation)
 
 	r.GET("/processors/brands/:brand", controllers.GetProcessorsByBrand)
 	r.GET("/mobos/brands/:brand", controllers.GetMoboByBrand)
@@ -60,6 +62,7 @@ func SetUpRouter() *gin.Engine {
 	r.POST("/power", controllers.CreatePowerSupply)
 	r.POST("/storages", controllers.CreateStorage)
 	r.POST("/computers", pcscontroller.CreateComputer)
+	r.POST("/recommendations", pcscontroller.CreateRecommendation)
 
 	r.PUT("/processors/:id", controllers.UpdateProcessor)
 	r.PUT("/mobos/:id", controllers.UpdateMotherBoard)
@@ -71,6 +74,7 @@ func SetUpRouter() *gin.Engine {
 	r.PUT("/power/:id", controllers.UpdatePowerSupply)
 	r.PUT("/storages/:id", controllers.UpdateStorage)
 	r.PUT("/computers/:id", pcscontroller.UpdateComputer)
+	r.PUT("/recommendations/:id", pcscontroller.UpdateRecommendation)
 
 	r.DELETE("/processors/:id", controllers.DeleteProcessor)
 	r.DELETE("/mobos/:id", controllers.DeleteMotherBoard)
@@ -82,9 +86,11 @@ func SetUpRouter() *gin.Engine {
 	r.DELETE("/power/:id", controllers.DeletePowerSupply)
 	r.DELETE("/storages/:id", controllers.DeleteStorage)
 	r.DELETE("/computers/:id", pcscontroller.DeleteComputer)
+	r.DELETE("/recommendations/:id", pcscontroller.DeleteRecommendation)
 
 	r.GET("/mobos/socket/:sockettype", controllers.GetMoBoBySocket)
 	r.GET("/computers/models/:modelName", pcscontroller.GetComputerByModelName)
+	r.GET("/recommendations/tags/:tag", pcscontroller.GetRecommendationByTag)
 
 	return r
 }

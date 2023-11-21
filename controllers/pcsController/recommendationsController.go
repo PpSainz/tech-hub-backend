@@ -75,6 +75,7 @@ func CreateRecommendation(c *gin.Context) {
 		return
 	}
 
+	database.DB.Preload(clause.Associations).Find(&recommendation)
 	database.DB.Preload(clause.Associations).Find(&recommendation.Computer)
 
 	c.JSON(201, gin.H{

@@ -17,6 +17,7 @@ func GetRecommendations(c *gin.Context) {
 		return
 	}
 
+	database.DB.Preload(clause.Associations).Find(&recommendations)
 	for i := 0; i < len(recommendations); i++ {
 		database.DB.Preload(clause.Associations).Find(&recommendations[i].Computer)
 	}
@@ -51,6 +52,7 @@ func GetRecommendationByTag(c *gin.Context) {
 		return
 	}
 
+	database.DB.Preload(clause.Associations).Find(&recommendations)
 	for i := 0; i < len(recommendations); i++ {
 		database.DB.Preload(clause.Associations).Find(&recommendations[i].Computer)
 	}
